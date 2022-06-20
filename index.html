@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<link rel="stylesheet" href="style.css"></link>
+
+<body> 
+ 	<section>
+ 		<h2 class="myname">이기석</h2>
+		<div id='textarea'></div>   
+		  	 <div id='textchosen_container'></div>     
+		<div class="btns">
+			 <button id="prevBtn" class="btn" value='-1'>실행취소</button>     
+			 <button id="nextBtn" class="btn" value='1'>재실행</button>   
+			 <button id="insertBtn" class="btn insertBtn" value='0'>추가</button>     
+		</div> 
+ 	</section>
+ 	
+ 
+</body>
+</html>  
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="browserStack.js"></script>
+<script type="text/javascript" src="eventHandlers.js"></script>
+<script type="text/javascript"> 
+
+const start = document.getElementsByTagName('body');
+const result = document.getElementById('textarea'); 
+const prevBtn = document.getElementById('prevBtn'); 
+const nextBtn = document.getElementById('nextBtn'); 
+const insertBtn = document.getElementById('insertBtn');
+const textchosenContainer = document.getElementById('textchosen_container');
+const text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.";
+const maxlength = 10000; // 출력할 단어의 수  
+var insertedArrlength = 0; //저장할 리스트식별자 번호를 위한 누적변수 
+var clickedArr = []; //클릭하고 ---> 추가누르기전 데이터를 저장할 임시변수 
+var cache = []; //로컬 리파지토리에 저장할 변수
+init(text,maxlength);
+initCss(cache);  
+var browserStack = new BrowserStack(cache); // 뒤로가기 앞으로가기     
+ 
+
+insertBtn.addEventListener('click',()=>{
+	insertItemHandler(clickedArr)
+	pushCacheArr();	 
+});     
+
+prevBtn.addEventListener('click',stackMoveHandler.bind(event));
+nextBtn.addEventListener('click',stackMoveHandler.bind(event));   
+insertBtn.addEventListener('click',stackMoveHandler.bind(event));   
+
+
+
+
+
+
+
+</script>
